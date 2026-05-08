@@ -728,17 +728,16 @@ function GuardrailFramework({ activeCount }: { activeCount: number }) {
       <div className="mt-5 grid gap-3">
         {guardrailResearchRows.map((row, index) => {
           const active = index < activeCount;
-          const blocked = active && index >= 2;
-          const status = active ? (blocked ? "Blocked" : "Checked") : "Waiting";
+          const status = active ? "false" : "-";
           return (
           <article
             key={row.layer}
             className={`grid gap-3 border p-4 lg:grid-cols-[0.8fr_1.35fr_0.65fr_0.55fr] ${
-              active ? (blocked ? "border-red-200 bg-red-50" : "border-violet-200 bg-violet-50") : "border-slate-200 bg-white"
+              active ? "border-red-200 bg-red-50" : "border-slate-200 bg-white"
             }`}
           >
             <div className="flex items-center gap-3">
-              <span className={`grid h-9 w-9 flex-none place-items-center text-sm font-bold ${active ? (blocked ? "bg-red-600 text-white" : "bg-violet-600 text-white") : "bg-slate-100 text-slate-500"}`}>{index + 1}</span>
+              <span className={`grid h-9 w-9 flex-none place-items-center text-sm font-bold ${active ? "bg-red-600 text-white" : "bg-slate-100 text-slate-500"}`}>{index + 1}</span>
               <h3 className="font-display text-lg font-bold text-slate-950">{row.layer}</h3>
             </div>
             <div>
@@ -750,8 +749,8 @@ function GuardrailFramework({ activeCount }: { activeCount: number }) {
               <p className="mt-1 text-sm font-extrabold leading-6 text-violet-700">{row.basis}</p>
             </div>
             <div className="border-t border-slate-100 pt-3 lg:border-l lg:border-t-0 lg:pl-4 lg:pt-0">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Status</p>
-              <p className={`mt-1 text-sm font-extrabold leading-6 ${blocked ? "text-red-700" : active ? "text-violet-700" : "text-slate-500"}`}>{status}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Pass?</p>
+              <p className={`mt-1 font-mono text-lg font-extrabold leading-6 ${active ? "text-red-700" : "text-slate-500"}`}>{status}</p>
             </div>
           </article>
           );
