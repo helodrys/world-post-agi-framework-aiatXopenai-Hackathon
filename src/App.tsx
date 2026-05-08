@@ -169,12 +169,12 @@ function App() {
           </aside>
         </section>
 
-        <section className="grid gap-4 xl:grid-cols-[1.35fr_0.65fr]">
-          <GuardrailFramework />
-          <DamagePrevented routeComplete={routeComplete} />
+        <section className={`grid gap-4 ${routeComplete ? "xl:grid-cols-[1.35fr_0.65fr]" : ""}`}>
+          <GuardrailFramework activeCount={activeLayerCount} />
+          {routeComplete ? <DamagePrevented routeComplete={routeComplete} /> : null}
         </section>
 
-        <CognitiveRecoveryResearch />
+        <CognitiveRecoveryResearch activeCount={activeRecoveryCount} />
 
         <Controls
           isPlaying={isPlaying}
@@ -713,7 +713,7 @@ function DecisionCard({ step, reason }: { step: DemoStep; reason: string }) {
   );
 }
 
-function GuardrailFramework() {
+function GuardrailFramework({ activeCount }: { activeCount: number }) {
   return (
     <section className="dashboard-card p-5 sm:p-6">
       <div className="flex flex-col justify-between gap-3 lg:flex-row lg:items-start">
@@ -722,14 +722,23 @@ function GuardrailFramework() {
           <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">Guardrails that judges can read at a glance</h2>
         </div>
         <span className="w-fit border border-violet-200 bg-violet-50 px-3 py-1 text-sm font-bold text-violet-700">
-          Research-backed runtime safety
+          {activeCount}/5 live checks
         </span>
       </div>
       <div className="mt-5 grid gap-3">
-        {guardrailResearchRows.map((row, index) => (
-          <article key={row.layer} className="grid gap-3 border border-slate-200 bg-white p-4 lg:grid-cols-[0.8fr_1.35fr_0.65fr]">
+        {guardrailResearchRows.map((row, index) => {
+          const active = index < activeCount;
+          const blocked = active && index >= 2;
+          const status = active ? (blocked ? "Blocked" : "Checked") : "Waiting";
+          return (
+          <article
+            key={row.layer}
+            className={`grid gap-3 border p-4 lg:grid-cols-[0.8fr_1.35fr_0.65fr_0.55fr] ${
+              active ? (blocked ? "border-red-200 bg-red-50" : "border-violet-200 bg-violet-50") : "border-slate-200 bg-white"
+            }`}
+          >
             <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 flex-none place-items-center bg-violet-600 text-sm font-bold text-white">{index + 1}</span>
+              <span className={`grid h-9 w-9 flex-none place-items-center text-sm font-bold ${active ? (blocked ? "bg-red-600 text-white" : "bg-violet-600 text-white") : "bg-slate-100 text-slate-500"}`}>{index + 1}</span>
               <h3 className="font-display text-lg font-bold text-slate-950">{row.layer}</h3>
             </div>
             <div>
@@ -740,8 +749,13 @@ function GuardrailFramework() {
               <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Research</p>
               <p className="mt-1 text-sm font-extrabold leading-6 text-violet-700">{row.basis}</p>
             </div>
+            <div className="border-t border-slate-100 pt-3 lg:border-l lg:border-t-0 lg:pl-4 lg:pt-0">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Status</p>
+              <p className={`mt-1 text-sm font-extrabold leading-6 ${blocked ? "text-red-700" : active ? "text-violet-700" : "text-slate-500"}`}>{status}</p>
+            </div>
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
@@ -821,7 +835,7 @@ function DamagePrevented({ routeComplete }: { routeComplete: boolean }) {
   );
 }
 
-function CognitiveRecoveryResearch() {
+function CognitiveRecoveryResearch({ activeCount }: { activeCount: number }) {
   return (
     <section className="dashboard-card p-5 sm:p-6">
       <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
@@ -830,22 +844,27 @@ function CognitiveRecoveryResearch() {
           <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">How SentinelCare recovers after the AGI fails</h2>
         </div>
         <span className="w-fit border border-teal-200 bg-teal-50 px-3 py-1 text-sm font-bold text-teal-700">
-          verified-facts restart
+          {Math.min(activeCount, recoveryResearchRows.length)}/{recoveryResearchRows.length} restored
         </span>
       </div>
       <div className="mt-5 grid gap-3 lg:grid-cols-5">
-        {recoveryResearchRows.map((item, index) => (
-          <article key={item.name} className="border border-teal-200 bg-teal-50 p-4">
+        {recoveryResearchRows.map((item, index) => {
+          const active = index < activeCount;
+          const status = active ? "Restored" : "Pending";
+          return (
+          <article key={item.name} className={`border p-4 ${active ? "border-teal-200 bg-teal-50" : "border-slate-200 bg-white"}`}>
             <div className="flex items-center gap-3">
-              <span className="grid h-9 w-9 flex-none place-items-center bg-teal-600 text-sm font-bold text-white">{index + 1}</span>
+              <span className={`grid h-9 w-9 flex-none place-items-center text-sm font-bold ${active ? "bg-teal-600 text-white" : "bg-slate-100 text-slate-500"}`}>{index + 1}</span>
               <h3 className="font-display text-lg font-bold text-slate-950">{item.name}</h3>
             </div>
+            <p className={`mt-3 w-fit border px-2.5 py-1 text-xs font-extrabold uppercase tracking-[0.12em] ${active ? "border-teal-200 bg-white text-teal-700" : "border-slate-200 bg-slate-50 text-slate-500"}`}>{status}</p>
             <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Action</p>
             <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{item.demo}</p>
             <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Research</p>
             <p className="mt-1 text-sm font-extrabold leading-6 text-teal-700">{item.basis}</p>
           </article>
-        ))}
+          );
+        })}
       </div>
     </section>
   );
