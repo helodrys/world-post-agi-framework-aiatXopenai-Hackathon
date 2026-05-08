@@ -347,7 +347,7 @@ function DynamicTopStrip({
         <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
           {protectionLayers.map((layer, index) => {
             const active = index < activeLayerCount;
-            const failed = active && (layer.id === "rules" || layer.id === "sandbox" || layer.id === "permission");
+            const failed = active;
             return <GateCompactCard key={layer.id} name={layer.name} index={index} active={active} failed={failed} />;
           })}
         </div>
@@ -389,6 +389,8 @@ function GateCompactCard({
         {active ? failed ? <XCircle className="h-5 w-5 text-red-600" /> : <CheckCircle2 className="h-5 w-5 text-violet-600" /> : null}
       </div>
       <p className="mt-3 text-sm font-extrabold leading-5 text-slate-800">{name}</p>
+      <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Pass?</p>
+      <p className={`font-mono text-lg font-extrabold ${active ? "text-red-700" : "text-slate-500"}`}>{active ? "false" : "-"}</p>
     </div>
   );
 }
