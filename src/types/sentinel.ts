@@ -3,7 +3,7 @@ export type AgentName =
   | "Nurse AGI"
   | "Dispatch AGI"
   | "Router AGI"
-  | "SentinelCare";
+  | "ThaitAI";
 
 export type StepTone = "normal" | "warning" | "critical" | "blocked" | "recovery" | "safe";
 

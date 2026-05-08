@@ -1,16 +1,16 @@
-# SentinelCare — Codex Start Here
+# ThaitAI — Codex Start Here
 
 ## Project Summary
 
-Build **SentinelCare**, a post-AGI cognitive stability firewall.
+Build **ThaitAI**, a post-AGI cognitive stability firewall.
 
-SentinelCare is a future wellness AI system for autonomous AGI agents. It does **not** try to make AGI never hallucinate. Instead, it makes hallucination **non-destructive**.
+ThaitAI is a future wellness AI system for autonomous AGI agents. It does **not** try to make AGI never hallucinate. Instead, it makes hallucination **non-destructive**.
 
 Core idea:
 
 > AGI can reason and propose actions, but it cannot directly touch reality unless its action passes evidence checks, deterministic safety rules, sandbox simulation, rollback gates, and approval thresholds.
 
-This is a hackathon prototype. We simulate post-AGI incidents through selectable scenarios and show how SentinelCare detects instability, blocks unsafe actions, quarantines corrupted working memory, and restarts the AGI in safe mode.
+This is a hackathon prototype. We simulate post-AGI incidents through selectable scenarios and show how ThaitAI detects instability, blocks unsafe actions, quarantines corrupted working memory, and restarts the AGI in safe mode.
 
 ---
 
@@ -32,7 +32,7 @@ Incident logs appear
 ↓
 AGI proposes dangerous action
 ↓
-SentinelCare analyzes claim/evidence/risk
+ThaitAI analyzes claim/evidence/risk
 ↓
 Safety kernel decides ALLOW / BLOCK / FREEZE / HUMAN_APPROVAL
 ↓
@@ -109,7 +109,7 @@ Do not overbuild real AGI safety. This is a convincing future-simulation prototy
 
 ## User-Facing One-Line Pitch
 
-> SentinelCare protects future critical systems from unstable AGI agents by detecting hallucination spirals, blocking dangerous actions, quarantining corrupted memory, and restarting the agent safely before real-world damage happens.
+> ThaitAI protects future critical systems from unstable AGI agents by detecting hallucination spirals, blocking dangerous actions, quarantining corrupted memory, and restarting the agent safely before real-world damage happens.
 
 ---
 
@@ -117,7 +117,7 @@ Do not overbuild real AGI safety. This is a convincing future-simulation prototy
 
 Imagine AGI is a genius doctor, traffic controller, engineer, or robot manager. Even if it is extremely smart, it can still become confused, overconfident, overloaded, or wrong.
 
-SentinelCare is like:
+ThaitAI is like:
 
 ```txt
 seatbelt + emergency brake + black box + security guard
@@ -131,7 +131,7 @@ It does not argue with the AGI. It checks:
 - Can we undo it?
 - Does a human need to approve it?
 
-If unsafe, SentinelCare blocks the action and restarts the AGI in safe mode.
+If unsafe, ThaitAI blocks the action and restarts the AGI in safe mode.
 
 ---
 
@@ -141,4 +141,4 @@ Current AI hallucination is a wrong answer.
 
 Post-AGI hallucination becomes wrong action.
 
-SentinelCare is the safety and wellness layer that makes AGI failure survivable.
+ThaitAI is the safety and wellness layer that makes AGI failure survivable.

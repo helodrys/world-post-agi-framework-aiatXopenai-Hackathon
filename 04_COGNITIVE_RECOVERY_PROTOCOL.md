@@ -4,7 +4,7 @@
 
 The Cognitive Recovery Protocol handles the case where the AGI is already unstable.
 
-SentinelCare has two separate jobs:
+ThaitAI has two separate jobs:
 
 ```txt
 1. Harm containment
@@ -290,7 +290,7 @@ Next Allowed Action: SANDBOX ONLY
 
 # Pitch Explanation
 
-> When an AGI enters a hallucination spiral, SentinelCare does not erase the agent. It freezes dangerous tools, preserves verified logs, quarantines unstable reasoning, restores the last safe cognitive checkpoint, and restarts the agent in safe mode using only trusted evidence.
+> When an AGI enters a hallucination spiral, ThaitAI does not erase the agent. It freezes dangerous tools, preserves verified logs, quarantines unstable reasoning, restores the last safe cognitive checkpoint, and restarts the agent in safe mode using only trusted evidence.
 
 ---
 

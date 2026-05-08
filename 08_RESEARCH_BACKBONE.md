@@ -1,8 +1,8 @@
-# Research Backbone for SentinelCare
+# Research Backbone for ThaitAI
 
 This file is for pitch support, not implementation.
 
-SentinelCare is original as a post-AGI product, but it is inspired by existing research areas.
+ThaitAI is original as a post-AGI product, but it is inspired by existing research areas.
 
 ---
 
@@ -16,7 +16,7 @@ Idea borrowed:
 If an AI gives many semantically different explanations for the same situation, it may be confabulating.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 Use unstable explanations and claim/evidence contradictions as hallucination spiral signals.
@@ -30,7 +30,7 @@ Idea borrowed:
 Sample multiple outputs and check consistency.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 If AGI keeps changing its explanation for a dangerous action, increase instability score and freeze tools.
@@ -48,7 +48,7 @@ Idea borrowed:
 LLM agents with tools can cause real damage when they take multi-step actions through external systems.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 AGI cannot directly use dangerous tools. Every tool action must pass through permission gates and safety kernel.
@@ -66,7 +66,7 @@ Idea borrowed:
 Use structured rules to block unsafe actions at runtime.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 Deterministic safety kernel blocks risky actions regardless of what the AGI says.
@@ -90,7 +90,7 @@ Idea borrowed:
 Agents should be interruptible when going down unsafe paths.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 When instability is detected, freeze dangerous tools and block permission escalation.
@@ -108,7 +108,7 @@ Idea borrowed:
 Let advanced controller operate only while safe. If danger appears, switch to verified safe controller.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 If hospital AGI is unstable, switch to conservative hospital routing.
@@ -128,7 +128,7 @@ Idea borrowed:
 AI memory should be layered, not one giant context blob.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 Core memory and verified evidence are preserved.
@@ -148,7 +148,7 @@ Idea borrowed:
 Agents can improve by reflecting on feedback and interacting with external observations.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 Reflection is allowed only after recovery, inside sandbox-only mode, using verified facts.
@@ -160,7 +160,7 @@ Reflection is allowed only after recovery, inside sandbox-only mode, using verif
 
 Current hallucination research focuses on wrong text.
 
-SentinelCare asks:
+ThaitAI asks:
 
 ```txt
 What happens when hallucination becomes wrong action?

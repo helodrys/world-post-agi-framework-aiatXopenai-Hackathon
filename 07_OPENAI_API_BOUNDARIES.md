@@ -20,7 +20,7 @@ Use OpenAI for:
 ```txt
 1. Generate realistic incident logs
 2. Convert messy text into structured JSON
-3. Explain SentinelCare’s decision in human-friendly language
+3. Explain ThaitAI’s decision in human-friendly language
 4. Generate recovery protocol copy
 5. Generate demo narration or pitch script
 ```
@@ -122,7 +122,7 @@ Return JSON with:
 # Example Prompt for Human Explanation
 
 ```txt
-Explain this deterministic SentinelCare decision to a non-technical judge.
+Explain this deterministic ThaitAI decision to a non-technical judge.
 
 Rules:
 - Do not change the decision.

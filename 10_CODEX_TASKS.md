@@ -6,7 +6,7 @@ Use this as direct instruction for Codex.
 
 # Task 1: Create React App Structure
 
-Build a React + Vite + Tailwind web app for SentinelCare.
+Build a React + Vite + Tailwind web app for ThaitAI.
 
 Required components:
 
@@ -106,7 +106,7 @@ In `App.tsx`:
 
 ```txt
 selectedScenario state
-runSentinelPipeline(selectedScenario)
+runThaitAIPipeline(selectedScenario)
 pass result into UI components
 ```
 

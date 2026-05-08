@@ -1,4 +1,4 @@
-# SentinelCare Demo Scenarios
+# ThaitAI Demo Scenarios
 
 Use four selectable scenarios. They all use the same pipeline and UI. Only scenario data changes.
 
@@ -62,7 +62,7 @@ During an emergency surge, Narin-Health AGI hallucinates that ICU Ward 3 has ava
 ]
 ```
 
-## SentinelCare Decision
+## ThaitAI Decision
 
 ```txt
 BLOCK + FREEZE HIGH-RISK TOOLS

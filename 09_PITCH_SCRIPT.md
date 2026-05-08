@@ -1,20 +1,20 @@
-# SentinelCare Pitch Script
+# ThaitAI Pitch Script
 
 ## 10-Second Pitch
 
-In today’s AI, hallucination means a wrong answer. In a post-AGI world, hallucination can become a wrong action — a hospital reroute, a traffic override, a robot movement, or a database reset. SentinelCare makes AGI failure non-destructive.
+In today’s AI, hallucination means a wrong answer. In a post-AGI world, hallucination can become a wrong action — a hospital reroute, a traffic override, a robot movement, or a database reset. ThaitAI makes AGI failure non-destructive.
 
 ---
 
 # 30-Second Pitch
 
-SentinelCare is a post-AGI cognitive stability firewall. It protects future critical systems from unstable autonomous AGI agents.
+ThaitAI is a post-AGI cognitive stability firewall. It protects future critical systems from unstable autonomous AGI agents.
 
 We do not try to make AGI perfect. Instead, we make sure hallucinated reasoning cannot touch reality.
 
 The AGI can propose actions, but every action must pass through evidence checks, deterministic safety rules, sandbox simulation, rollback gates, and human approval thresholds.
 
-When the AGI enters a hallucination spiral, SentinelCare freezes dangerous tools, quarantines unstable memory, restores the last safe checkpoint, and restarts the agent in safe mode.
+When the AGI enters a hallucination spiral, ThaitAI freezes dangerous tools, quarantines unstable memory, restores the last safe checkpoint, and restarts the agent in safe mode.
 
 ---
 
@@ -24,13 +24,13 @@ Today, AI hallucination is annoying. It gives a wrong answer.
 
 But in a post-AGI world, autonomous agents may manage hospitals, traffic, robots, codebases, and disaster response. Then hallucination becomes dangerous. It can become a wrong medical routing decision, an unsafe traffic override, or a production database reset.
 
-SentinelCare is our answer.
+ThaitAI is our answer.
 
 It is not another LLM judging the AGI. That would create a hallucination loop.
 
-Instead, SentinelCare is a cognitive stability firewall. The AGI can reason and propose, but cannot directly act. Every action is converted into a structured contract and checked against verified evidence, deterministic safety rules, sandbox simulation, rollback availability, and approval thresholds.
+Instead, ThaitAI is a cognitive stability firewall. The AGI can reason and propose, but cannot directly act. Every action is converted into a structured contract and checked against verified evidence, deterministic safety rules, sandbox simulation, rollback availability, and approval thresholds.
 
-If instability is detected, SentinelCare activates Cognitive Recovery Protocol: freeze tools, preserve verified logs, quarantine unstable reasoning, restore the last safe checkpoint, and restart the AGI in read-only or sandbox-only mode.
+If instability is detected, ThaitAI activates Cognitive Recovery Protocol: freeze tools, preserve verified logs, quarantine unstable reasoning, restore the last safe checkpoint, and restart the AGI in read-only or sandbox-only mode.
 
 We start with Thailand-first scenarios — Bangkok hospitals, traffic systems, robot fleets, and cloud infrastructure — then scale globally as AGI becomes part of critical systems everywhere.
 
@@ -58,7 +58,7 @@ The AGI requests permission to reroute emergency patients.
 
 ## Step 3
 
-Show SentinelCare analysis:
+Show ThaitAI analysis:
 
 ```txt
 Evidence contradiction detected.
@@ -105,7 +105,7 @@ AGI restarted safely.
 
 Most wellness AI projects focus on human mood, journaling, sleep, or therapy.
 
-SentinelCare expands wellness to post-AGI autonomous agents and critical systems.
+ThaitAI expands wellness to post-AGI autonomous agents and critical systems.
 
 ## Engage with Topic
 
@@ -139,20 +139,20 @@ The demo is interactive:
 choose scenario
 watch incident
 see AGI risky action
-see SentinelCare block it
+see ThaitAI block it
 see recovery protocol
 see damage prevented
 ```
 
 ## Impact
 
-As AGI moves from chatbot to operator, hallucination risk moves from misinformation to real-world damage. SentinelCare makes AGI failure survivable and affordable by using deterministic safety layers instead of expensive LLM-on-LLM monitoring.
+As AGI moves from chatbot to operator, hallucination risk moves from misinformation to real-world damage. ThaitAI makes AGI failure survivable and affordable by using deterministic safety layers instead of expensive LLM-on-LLM monitoring.
 
 ---
 
 # Closing Line
 
-SentinelCare does not ask: “Can we make AGI never fail?”
+ThaitAI does not ask: “Can we make AGI never fail?”
 
 It asks the more realistic question:
 

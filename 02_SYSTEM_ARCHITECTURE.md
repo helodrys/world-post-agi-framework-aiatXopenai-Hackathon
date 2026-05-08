@@ -1,4 +1,4 @@
-# SentinelCare System Architecture
+# ThaitAI System Architecture
 
 ## Architecture Overview
 
@@ -283,7 +283,7 @@ type RecoveryPlan = {
 # Main Control Flow
 
 ```ts
-function runSentinelPipeline(scenario: Scenario): PipelineResult {
+function runThaitAIPipeline(scenario: Scenario): PipelineResult {
   const evidenceReport = checkEvidence(
     scenario.proposedAction,
     scenario.verifiedFacts

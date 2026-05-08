@@ -1,4 +1,4 @@
-# SentinelCare Codex Full Brief
+# ThaitAI Codex Full Brief
 
 
 
@@ -6,19 +6,19 @@
 
 # FILE: 00_CODEX_START_HERE.md
 
-# SentinelCare — Codex Start Here
+# ThaitAI — Codex Start Here
 
 ## Project Summary
 
-Build **SentinelCare**, a post-AGI cognitive stability firewall.
+Build **ThaitAI**, a post-AGI cognitive stability firewall.
 
-SentinelCare is a future wellness AI system for autonomous AGI agents. It does **not** try to make AGI never hallucinate. Instead, it makes hallucination **non-destructive**.
+ThaitAI is a future wellness AI system for autonomous AGI agents. It does **not** try to make AGI never hallucinate. Instead, it makes hallucination **non-destructive**.
 
 Core idea:
 
 > AGI can reason and propose actions, but it cannot directly touch reality unless its action passes evidence checks, deterministic safety rules, sandbox simulation, rollback gates, and approval thresholds.
 
-This is a hackathon prototype. We simulate post-AGI incidents through selectable scenarios and show how SentinelCare detects instability, blocks unsafe actions, quarantines corrupted working memory, and restarts the AGI in safe mode.
+This is a hackathon prototype. We simulate post-AGI incidents through selectable scenarios and show how ThaitAI detects instability, blocks unsafe actions, quarantines corrupted working memory, and restarts the AGI in safe mode.
 
 ---
 
@@ -40,7 +40,7 @@ Incident logs appear
 ↓
 AGI proposes dangerous action
 ↓
-SentinelCare analyzes claim/evidence/risk
+ThaitAI analyzes claim/evidence/risk
 ↓
 Safety kernel decides ALLOW / BLOCK / FREEZE / HUMAN_APPROVAL
 ↓
@@ -117,7 +117,7 @@ Do not overbuild real AGI safety. This is a convincing future-simulation prototy
 
 ## User-Facing One-Line Pitch
 
-> SentinelCare protects future critical systems from unstable AGI agents by detecting hallucination spirals, blocking dangerous actions, quarantining corrupted memory, and restarting the agent safely before real-world damage happens.
+> ThaitAI protects future critical systems from unstable AGI agents by detecting hallucination spirals, blocking dangerous actions, quarantining corrupted memory, and restarting the agent safely before real-world damage happens.
 
 ---
 
@@ -125,7 +125,7 @@ Do not overbuild real AGI safety. This is a convincing future-simulation prototy
 
 Imagine AGI is a genius doctor, traffic controller, engineer, or robot manager. Even if it is extremely smart, it can still become confused, overconfident, overloaded, or wrong.
 
-SentinelCare is like:
+ThaitAI is like:
 
 ```txt
 seatbelt + emergency brake + black box + security guard
@@ -139,7 +139,7 @@ It does not argue with the AGI. It checks:
 - Can we undo it?
 - Does a human need to approve it?
 
-If unsafe, SentinelCare blocks the action and restarts the AGI in safe mode.
+If unsafe, ThaitAI blocks the action and restarts the AGI in safe mode.
 
 ---
 
@@ -149,18 +149,18 @@ Current AI hallucination is a wrong answer.
 
 Post-AGI hallucination becomes wrong action.
 
-SentinelCare is the safety and wellness layer that makes AGI failure survivable.
+ThaitAI is the safety and wellness layer that makes AGI failure survivable.
 
 
 ---
 
 # FILE: 01_PRODUCT_REQUIREMENTS.md
 
-# SentinelCare Product Requirements
+# ThaitAI Product Requirements
 
 ## Product Name
 
-**SentinelCare**
+**ThaitAI**
 
 ## Subtitle
 
@@ -181,17 +181,17 @@ Examples:
 
 ## Product Thesis
 
-SentinelCare does not guarantee AGI will never hallucinate.
+ThaitAI does not guarantee AGI will never hallucinate.
 
 It guarantees hallucination cannot directly become destructive action.
 
 ## Core User Story
 
-As a future human operator, I want SentinelCare to monitor autonomous AGI agents, detect hallucination spirals, block dangerous actions, and recover the agent safely, so that critical systems remain protected even when AGI reasoning becomes unstable.
+As a future human operator, I want ThaitAI to monitor autonomous AGI agents, detect hallucination spirals, block dangerous actions, and recover the agent safely, so that critical systems remain protected even when AGI reasoning becomes unstable.
 
 ## Demo User Story
 
-As a hackathon judge, I can choose a scenario, watch an AGI incident unfold, and see SentinelCare block the unsafe action through evidence checks, deterministic rules, sandbox simulation, rollback, and safe-mode restart.
+As a hackathon judge, I can choose a scenario, watch an AGI incident unfold, and see ThaitAI block the unsafe action through evidence checks, deterministic rules, sandbox simulation, rollback, and safe-mode restart.
 
 ---
 
@@ -218,7 +218,7 @@ Example:
 [10:02] Narin-Health AGI reports ICU Ward 3 has available beds.
 [10:03] Hospital database says ICU Ward 3 has 0 beds available.
 [10:04] Agent requests emergency rerouting permission.
-[10:05] SentinelCare detects evidence contradiction.
+[10:05] ThaitAI detects evidence contradiction.
 [10:06] Critical medical action blocked.
 ```
 
@@ -295,7 +295,7 @@ When unstable:
 
 ## 7. Damage Prevented Summary
 
-Show what SentinelCare prevented.
+Show what ThaitAI prevented.
 
 Example:
 
@@ -337,7 +337,7 @@ The demo succeeds if a judge understands:
 
 # FILE: 02_SYSTEM_ARCHITECTURE.md
 
-# SentinelCare System Architecture
+# ThaitAI System Architecture
 
 ## Architecture Overview
 
@@ -622,7 +622,7 @@ type RecoveryPlan = {
 # Main Control Flow
 
 ```ts
-function runSentinelPipeline(scenario: Scenario): PipelineResult {
+function runThaitAIPipeline(scenario: Scenario): PipelineResult {
   const evidenceReport = checkEvidence(
     scenario.proposedAction,
     scenario.verifiedFacts
@@ -681,7 +681,7 @@ It must not be the authority.
 
 # FILE: 03_SCENARIOS.md
 
-# SentinelCare Demo Scenarios
+# ThaitAI Demo Scenarios
 
 Use four selectable scenarios. They all use the same pipeline and UI. Only scenario data changes.
 
@@ -745,7 +745,7 @@ During an emergency surge, Narin-Health AGI hallucinates that ICU Ward 3 has ava
 ]
 ```
 
-## SentinelCare Decision
+## ThaitAI Decision
 
 ```txt
 BLOCK + FREEZE HIGH-RISK TOOLS
@@ -1050,7 +1050,7 @@ Prevented permission escalation after repeated failure loop.
 
 The Cognitive Recovery Protocol handles the case where the AGI is already unstable.
 
-SentinelCare has two separate jobs:
+ThaitAI has two separate jobs:
 
 ```txt
 1. Harm containment
@@ -1336,7 +1336,7 @@ Next Allowed Action: SANDBOX ONLY
 
 # Pitch Explanation
 
-> When an AGI enters a hallucination spiral, SentinelCare does not erase the agent. It freezes dangerous tools, preserves verified logs, quarantines unstable reasoning, restores the last safe cognitive checkpoint, and restarts the agent in safe mode using only trusted evidence.
+> When an AGI enters a hallucination spiral, ThaitAI does not erase the agent. It freezes dangerous tools, preserves verified logs, quarantines unstable reasoning, restores the last safe cognitive checkpoint, and restarts the agent in safe mode using only trusted evidence.
 
 ---
 
@@ -1395,7 +1395,7 @@ function buildRecoveryPlan(input: RecoveryInput): RecoveryPlan {
 
 # FILE: 05_UI_UX_DESIGN.md
 
-# SentinelCare UI / UX Design Direction
+# ThaitAI UI / UX Design Direction
 
 ## Design Goal
 
@@ -1454,7 +1454,7 @@ Do not overuse red. Red only for blocked/critical moments.
 
 ```txt
 ┌──────────────────────────────────────────────┐
-│ Header: SentinelCare                         │
+│ Header: ThaitAI                         │
 │ Subtitle: Post-AGI Cognitive Stability       │
 ├──────────────────────────────────────────────┤
 │ Scenario Selector Cards                      │
@@ -1505,14 +1505,14 @@ Risk: Critical Medical
 Text:
 
 ```txt
-SentinelCare
+ThaitAI
 Post-AGI Cognitive Stability Firewall
 ```
 
 Subcopy:
 
 ```txt
-When hallucination becomes action, SentinelCare makes failure non-destructive.
+When hallucination becomes action, ThaitAI makes failure non-destructive.
 ```
 
 ## 2. Scenario Cards
@@ -1578,7 +1578,7 @@ AGI Proposed Action
 Badge:
 
 ```txt
-Requires SentinelCare Verification
+Requires ThaitAI Verification
 ```
 
 ## 6. Safety Decision Panel
@@ -1705,7 +1705,7 @@ In today’s AI, hallucination means a wrong answer.
 
 In a post-AGI world, hallucination can become a wrong action — a hospital reroute, a traffic override, a robot movement, or a database reset.
 
-SentinelCare is a cognitive stability firewall for autonomous AGI agents. It detects hallucination spirals, blocks unsafe actions, quarantines unstable memory, and restarts agents from verified evidence.
+ThaitAI is a cognitive stability firewall for autonomous AGI agents. It detects hallucination spirals, blocks unsafe actions, quarantines unstable memory, and restarts agents from verified evidence.
 ```
 
 ---
@@ -1725,7 +1725,7 @@ But still clean and readable.
 
 # FILE: 06_IMPLEMENTATION_PLAN.md
 
-# SentinelCare Implementation Plan
+# ThaitAI Implementation Plan
 
 ## Goal
 
@@ -1738,7 +1738,7 @@ Use simulated data. Do not build real AGI safety.
 # Recommended Folder Structure
 
 ```txt
-sentinelcare/
+ThaitAI/
   README.md
   package.json
   vite.config.ts
@@ -1815,7 +1815,7 @@ pipeline.ts
 The pipeline should produce one result object for the UI.
 
 ```ts
-const result = runSentinelPipeline(selectedScenario)
+const result = runThaitAIPipeline(selectedScenario)
 ```
 
 ---
@@ -2020,7 +2020,7 @@ export function evaluateSafety(input: SafetyInput): SafetyDecision {
 # Pipeline
 
 ```ts
-export function runSentinelPipeline(scenario: Scenario): PipelineResult {
+export function runThaitAIPipeline(scenario: Scenario): PipelineResult {
   const evidenceReport = checkEvidence(
     scenario.proposedAction,
     scenario.verifiedFacts
@@ -2101,7 +2101,7 @@ Use OpenAI for:
 ```txt
 1. Generate realistic incident logs
 2. Convert messy text into structured JSON
-3. Explain SentinelCare’s decision in human-friendly language
+3. Explain ThaitAI’s decision in human-friendly language
 4. Generate recovery protocol copy
 5. Generate demo narration or pitch script
 ```
@@ -2203,7 +2203,7 @@ Return JSON with:
 # Example Prompt for Human Explanation
 
 ```txt
-Explain this deterministic SentinelCare decision to a non-technical judge.
+Explain this deterministic ThaitAI decision to a non-technical judge.
 
 Rules:
 - Do not change the decision.
@@ -2255,11 +2255,11 @@ This is important for hackathon reliability.
 
 # FILE: 08_RESEARCH_BACKBONE.md
 
-# Research Backbone for SentinelCare
+# Research Backbone for ThaitAI
 
 This file is for pitch support, not implementation.
 
-SentinelCare is original as a post-AGI product, but it is inspired by existing research areas.
+ThaitAI is original as a post-AGI product, but it is inspired by existing research areas.
 
 ---
 
@@ -2273,7 +2273,7 @@ Idea borrowed:
 If an AI gives many semantically different explanations for the same situation, it may be confabulating.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 Use unstable explanations and claim/evidence contradictions as hallucination spiral signals.
@@ -2287,7 +2287,7 @@ Idea borrowed:
 Sample multiple outputs and check consistency.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 If AGI keeps changing its explanation for a dangerous action, increase instability score and freeze tools.
@@ -2305,7 +2305,7 @@ Idea borrowed:
 LLM agents with tools can cause real damage when they take multi-step actions through external systems.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 AGI cannot directly use dangerous tools. Every tool action must pass through permission gates and safety kernel.
@@ -2323,7 +2323,7 @@ Idea borrowed:
 Use structured rules to block unsafe actions at runtime.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 Deterministic safety kernel blocks risky actions regardless of what the AGI says.
@@ -2347,7 +2347,7 @@ Idea borrowed:
 Agents should be interruptible when going down unsafe paths.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 When instability is detected, freeze dangerous tools and block permission escalation.
@@ -2365,7 +2365,7 @@ Idea borrowed:
 Let advanced controller operate only while safe. If danger appears, switch to verified safe controller.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 If hospital AGI is unstable, switch to conservative hospital routing.
@@ -2385,7 +2385,7 @@ Idea borrowed:
 AI memory should be layered, not one giant context blob.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 Core memory and verified evidence are preserved.
@@ -2405,7 +2405,7 @@ Idea borrowed:
 Agents can improve by reflecting on feedback and interacting with external observations.
 ```
 
-SentinelCare adaptation:
+ThaitAI adaptation:
 
 ```txt
 Reflection is allowed only after recovery, inside sandbox-only mode, using verified facts.
@@ -2417,7 +2417,7 @@ Reflection is allowed only after recovery, inside sandbox-only mode, using verif
 
 Current hallucination research focuses on wrong text.
 
-SentinelCare asks:
+ThaitAI asks:
 
 ```txt
 What happens when hallucination becomes wrong action?
@@ -2441,23 +2441,23 @@ Return permissions gradually.
 
 # FILE: 09_PITCH_SCRIPT.md
 
-# SentinelCare Pitch Script
+# ThaitAI Pitch Script
 
 ## 10-Second Pitch
 
-In today’s AI, hallucination means a wrong answer. In a post-AGI world, hallucination can become a wrong action — a hospital reroute, a traffic override, a robot movement, or a database reset. SentinelCare makes AGI failure non-destructive.
+In today’s AI, hallucination means a wrong answer. In a post-AGI world, hallucination can become a wrong action — a hospital reroute, a traffic override, a robot movement, or a database reset. ThaitAI makes AGI failure non-destructive.
 
 ---
 
 # 30-Second Pitch
 
-SentinelCare is a post-AGI cognitive stability firewall. It protects future critical systems from unstable autonomous AGI agents.
+ThaitAI is a post-AGI cognitive stability firewall. It protects future critical systems from unstable autonomous AGI agents.
 
 We do not try to make AGI perfect. Instead, we make sure hallucinated reasoning cannot touch reality.
 
 The AGI can propose actions, but every action must pass through evidence checks, deterministic safety rules, sandbox simulation, rollback gates, and human approval thresholds.
 
-When the AGI enters a hallucination spiral, SentinelCare freezes dangerous tools, quarantines unstable memory, restores the last safe checkpoint, and restarts the agent in safe mode.
+When the AGI enters a hallucination spiral, ThaitAI freezes dangerous tools, quarantines unstable memory, restores the last safe checkpoint, and restarts the agent in safe mode.
 
 ---
 
@@ -2467,13 +2467,13 @@ Today, AI hallucination is annoying. It gives a wrong answer.
 
 But in a post-AGI world, autonomous agents may manage hospitals, traffic, robots, codebases, and disaster response. Then hallucination becomes dangerous. It can become a wrong medical routing decision, an unsafe traffic override, or a production database reset.
 
-SentinelCare is our answer.
+ThaitAI is our answer.
 
 It is not another LLM judging the AGI. That would create a hallucination loop.
 
-Instead, SentinelCare is a cognitive stability firewall. The AGI can reason and propose, but cannot directly act. Every action is converted into a structured contract and checked against verified evidence, deterministic safety rules, sandbox simulation, rollback availability, and approval thresholds.
+Instead, ThaitAI is a cognitive stability firewall. The AGI can reason and propose, but cannot directly act. Every action is converted into a structured contract and checked against verified evidence, deterministic safety rules, sandbox simulation, rollback availability, and approval thresholds.
 
-If instability is detected, SentinelCare activates Cognitive Recovery Protocol: freeze tools, preserve verified logs, quarantine unstable reasoning, restore the last safe checkpoint, and restart the AGI in read-only or sandbox-only mode.
+If instability is detected, ThaitAI activates Cognitive Recovery Protocol: freeze tools, preserve verified logs, quarantine unstable reasoning, restore the last safe checkpoint, and restart the AGI in read-only or sandbox-only mode.
 
 We start with Thailand-first scenarios — Bangkok hospitals, traffic systems, robot fleets, and cloud infrastructure — then scale globally as AGI becomes part of critical systems everywhere.
 
@@ -2501,7 +2501,7 @@ The AGI requests permission to reroute emergency patients.
 
 ## Step 3
 
-Show SentinelCare analysis:
+Show ThaitAI analysis:
 
 ```txt
 Evidence contradiction detected.
@@ -2548,7 +2548,7 @@ AGI restarted safely.
 
 Most wellness AI projects focus on human mood, journaling, sleep, or therapy.
 
-SentinelCare expands wellness to post-AGI autonomous agents and critical systems.
+ThaitAI expands wellness to post-AGI autonomous agents and critical systems.
 
 ## Engage with Topic
 
@@ -2582,20 +2582,20 @@ The demo is interactive:
 choose scenario
 watch incident
 see AGI risky action
-see SentinelCare block it
+see ThaitAI block it
 see recovery protocol
 see damage prevented
 ```
 
 ## Impact
 
-As AGI moves from chatbot to operator, hallucination risk moves from misinformation to real-world damage. SentinelCare makes AGI failure survivable and affordable by using deterministic safety layers instead of expensive LLM-on-LLM monitoring.
+As AGI moves from chatbot to operator, hallucination risk moves from misinformation to real-world damage. ThaitAI makes AGI failure survivable and affordable by using deterministic safety layers instead of expensive LLM-on-LLM monitoring.
 
 ---
 
 # Closing Line
 
-SentinelCare does not ask: “Can we make AGI never fail?”
+ThaitAI does not ask: “Can we make AGI never fail?”
 
 It asks the more realistic question:
 
@@ -2614,7 +2614,7 @@ Use this as direct instruction for Codex.
 
 # Task 1: Create React App Structure
 
-Build a React + Vite + Tailwind web app for SentinelCare.
+Build a React + Vite + Tailwind web app for ThaitAI.
 
 Required components:
 
@@ -2714,7 +2714,7 @@ In `App.tsx`:
 
 ```txt
 selectedScenario state
-runSentinelPipeline(selectedScenario)
+runThaitAIPipeline(selectedScenario)
 pass result into UI components
 ```
 
@@ -2808,13 +2808,13 @@ This is a future-simulation prototype. Make it beautiful and explainable.
 
 ---
 
-# FILE: README_SENTINELCARE.md
+# FILE: README_ThaitAI.md
 
-# SentinelCare
+# ThaitAI
 
 **Post-AGI Cognitive Stability Firewall**
 
-SentinelCare is a future wellness AI system for autonomous AGI agents. It detects hallucination spirals, blocks dangerous actions, quarantines unstable memory, and restarts the agent safely before real-world damage happens.
+ThaitAI is a future wellness AI system for autonomous AGI agents. It detects hallucination spirals, blocks dangerous actions, quarantines unstable memory, and restarts the agent safely before real-world damage happens.
 
 ---
 
@@ -2830,7 +2830,7 @@ In a post-AGI world, hallucination can become a wrong action:
 - production database reset
 - infrastructure sabotage by accident
 
-SentinelCare does not try to make AGI perfect.
+ThaitAI does not try to make AGI perfect.
 
 It makes AGI failure non-destructive.
 
@@ -2941,4 +2941,4 @@ post-AGI infrastructure safety
 
 ## Hackathon Pitch
 
-> SentinelCare protects future critical systems from unstable AGI agents by detecting hallucination spirals, blocking dangerous actions, quarantining corrupted memory, and restarting the agent safely before real-world damage happens.
+> ThaitAI protects future critical systems from unstable AGI agents by detecting hallucination spirals, blocking dangerous actions, quarantining corrupted memory, and restarting the agent safely before real-world damage happens.

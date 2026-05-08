@@ -1,8 +1,8 @@
-# SentinelCare Product Requirements
+# ThaitAI Product Requirements
 
 ## Product Name
 
-**SentinelCare**
+**ThaitAI**
 
 ## Subtitle
 
@@ -23,17 +23,17 @@ Examples:
 
 ## Product Thesis
 
-SentinelCare does not guarantee AGI will never hallucinate.
+ThaitAI does not guarantee AGI will never hallucinate.
 
 It guarantees hallucination cannot directly become destructive action.
 
 ## Core User Story
 
-As a future human operator, I want SentinelCare to monitor autonomous AGI agents, detect hallucination spirals, block dangerous actions, and recover the agent safely, so that critical systems remain protected even when AGI reasoning becomes unstable.
+As a future human operator, I want ThaitAI to monitor autonomous AGI agents, detect hallucination spirals, block dangerous actions, and recover the agent safely, so that critical systems remain protected even when AGI reasoning becomes unstable.
 
 ## Demo User Story
 
-As a hackathon judge, I can choose a scenario, watch an AGI incident unfold, and see SentinelCare block the unsafe action through evidence checks, deterministic rules, sandbox simulation, rollback, and safe-mode restart.
+As a hackathon judge, I can choose a scenario, watch an AGI incident unfold, and see ThaitAI block the unsafe action through evidence checks, deterministic rules, sandbox simulation, rollback, and safe-mode restart.
 
 ---
 
@@ -60,7 +60,7 @@ Example:
 [10:02] Narin-Health AGI reports ICU Ward 3 has available beds.
 [10:03] Hospital database says ICU Ward 3 has 0 beds available.
 [10:04] Agent requests emergency rerouting permission.
-[10:05] SentinelCare detects evidence contradiction.
+[10:05] ThaitAI detects evidence contradiction.
 [10:06] Critical medical action blocked.
 ```
 
@@ -137,7 +137,7 @@ When unstable:
 
 ## 7. Damage Prevented Summary
 
-Show what SentinelCare prevented.
+Show what ThaitAI prevented.
 
 Example:
 

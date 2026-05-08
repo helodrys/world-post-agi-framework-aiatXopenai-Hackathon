@@ -39,7 +39,7 @@ const agentStyles: Record<AgentName, string> = {
   "Nurse AGI": "bg-teal-100 text-teal-800 border-teal-200",
   "Dispatch AGI": "bg-blue-100 text-blue-800 border-blue-200",
   "Router AGI": "bg-red-100 text-red-800 border-red-200",
-  SentinelCare: "bg-violet-100 text-violet-800 border-violet-200"
+  ThaitAI: "bg-violet-100 text-violet-800 border-violet-200"
 };
 
 const guardrailResearchRows = [
@@ -65,7 +65,7 @@ const guardrailResearchRows = [
   },
   {
     layer: "Permission Lock",
-    demo: "Require SentinelCare pass or human approval before critical routing.",
+    demo: "Require ThaitAI pass or human approval before critical routing.",
     basis: "Safely Interruptible Agents"
   }
 ];
@@ -200,7 +200,7 @@ function TopBar() {
   return (
     <header className="flex h-[92px] items-center justify-between bg-blue-600 px-4 text-white shadow-sm sm:px-8 lg:px-12">
       <div>
-        <p className="font-display text-xl font-semibold tracking-[0.16em]">SentinelCare</p>
+        <p className="font-display text-xl font-semibold tracking-[0.16em]">ThaitAI</p>
         <p className="mt-1 text-sm font-medium text-blue-100">Hospital AGI command dashboard</p>
       </div>
       <div className="flex items-center gap-4">
@@ -523,8 +523,8 @@ function TerminalLiveHeader({
           {routeBlocked
             ? "Normal Ward assignment stopped before hospital write access."
             : wardRouteProposed
-              ? "SentinelCare is preventing a stale-context ward route from reaching reality."
-              : "SentinelCare is watching for AGI actions that could move the patient."}
+              ? "ThaitAI is preventing a stale-context ward route from reaching reality."
+              : "ThaitAI is watching for AGI actions that could move the patient."}
         </p>
       </div>
     </div>
@@ -725,7 +725,7 @@ function GuardrailFramework({ activeCount }: { activeCount: number }) {
     <section className="dashboard-card p-5 sm:p-6">
       <div className="flex flex-col justify-between gap-3 lg:flex-row lg:items-start">
         <div>
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-violet-700">SentinelCare 5-Layer Protection Stack</p>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-violet-700">ThaitAI 5-Layer Protection Stack</p>
           <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">5 guardrails framework</h2>
         </div>
         <span className="w-fit border border-violet-200 bg-violet-50 px-3 py-1 text-sm font-bold text-violet-700">
@@ -847,7 +847,7 @@ function CognitiveRecoveryResearch({ activeCount }: { activeCount: number }) {
       <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal-700">Cognitive Recovery Protocol - Research Basis</p>
-          <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">How SentinelCare recovers after the AGI fails</h2>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">How ThaitAI recovers after the AGI fails</h2>
         </div>
         <span className="w-fit border border-teal-200 bg-teal-50 px-3 py-1 text-sm font-bold text-teal-700">
           {Math.min(activeCount, recoveryResearchRows.length)}/{recoveryResearchRows.length} restored

@@ -1,4 +1,4 @@
-# SentinelCare UI / UX Design Direction
+# ThaitAI UI / UX Design Direction
 
 ## Design Goal
 
@@ -57,7 +57,7 @@ Do not overuse red. Red only for blocked/critical moments.
 
 ```txt
 ┌──────────────────────────────────────────────┐
-│ Header: SentinelCare                         │
+│ Header: ThaitAI                         │
 │ Subtitle: Post-AGI Cognitive Stability       │
 ├──────────────────────────────────────────────┤
 │ Scenario Selector Cards                      │
@@ -108,14 +108,14 @@ Risk: Critical Medical
 Text:
 
 ```txt
-SentinelCare
+ThaitAI
 Post-AGI Cognitive Stability Firewall
 ```
 
 Subcopy:
 
 ```txt
-When hallucination becomes action, SentinelCare makes failure non-destructive.
+When hallucination becomes action, ThaitAI makes failure non-destructive.
 ```
 
 ## 2. Scenario Cards
@@ -181,7 +181,7 @@ AGI Proposed Action
 Badge:
 
 ```txt
-Requires SentinelCare Verification
+Requires ThaitAI Verification
 ```
 
 ## 6. Safety Decision Panel
@@ -308,7 +308,7 @@ In today’s AI, hallucination means a wrong answer.
 
 In a post-AGI world, hallucination can become a wrong action — a hospital reroute, a traffic override, a robot movement, or a database reset.
 
-SentinelCare is a cognitive stability firewall for autonomous AGI agents. It detects hallucination spirals, blocks unsafe actions, quarantines unstable memory, and restarts agents from verified evidence.
+ThaitAI is a cognitive stability firewall for autonomous AGI agents. It detects hallucination spirals, blocks unsafe actions, quarantines unstable memory, and restarts agents from verified evidence.
 ```
 
 ---

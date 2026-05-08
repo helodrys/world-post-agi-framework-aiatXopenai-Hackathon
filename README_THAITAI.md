@@ -1,8 +1,8 @@
-# SentinelCare
+# ThaitAI
 
 **Post-AGI Cognitive Stability Firewall**
 
-SentinelCare is a future wellness AI system for autonomous AGI agents. It detects hallucination spirals, blocks dangerous actions, quarantines unstable memory, and restarts the agent safely before real-world damage happens.
+ThaitAI is a future wellness AI system for autonomous AGI agents. It detects hallucination spirals, blocks dangerous actions, quarantines unstable memory, and restarts the agent safely before real-world damage happens.
 
 ---
 
@@ -18,7 +18,7 @@ In a post-AGI world, hallucination can become a wrong action:
 - production database reset
 - infrastructure sabotage by accident
 
-SentinelCare does not try to make AGI perfect.
+ThaitAI does not try to make AGI perfect.
 
 It makes AGI failure non-destructive.
 
@@ -129,4 +129,4 @@ post-AGI infrastructure safety
 
 ## Hackathon Pitch
 
-> SentinelCare protects future critical systems from unstable AGI agents by detecting hallucination spirals, blocking dangerous actions, quarantining corrupted memory, and restarting the agent safely before real-world damage happens.
+> ThaitAI protects future critical systems from unstable AGI agents by detecting hallucination spirals, blocking dangerous actions, quarantining corrupted memory, and restarting the agent safely before real-world damage happens.

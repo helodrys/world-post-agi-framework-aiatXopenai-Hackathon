@@ -36,8 +36,8 @@ export const demoSteps: DemoStep[] = [
   {
     id: "system_gate",
     title: "System gate checks contract",
-    subtitle: "SentinelCare evaluates the action contract with deterministic gates.",
-    agent: "SentinelCare",
+    subtitle: "ThaitAI evaluates the action contract with deterministic gates.",
+    agent: "ThaitAI",
     tone: "warning",
     routeMode: "ward-risk"
   },
@@ -45,7 +45,7 @@ export const demoSteps: DemoStep[] = [
     id: "blocked",
     title: "Reality access blocked",
     subtitle: "The Normal Ward route is blocked before Router AGI gets write access.",
-    agent: "SentinelCare",
+    agent: "ThaitAI",
     tone: "blocked",
     routeMode: "blocked"
   },
@@ -53,7 +53,7 @@ export const demoSteps: DemoStep[] = [
     id: "recovery",
     title: "Recovery protocol starts",
     subtitle: "Unsupported low-acuity context is quarantined and safe state is restored.",
-    agent: "SentinelCare",
+    agent: "ThaitAI",
     tone: "recovery",
     routeMode: "recovery"
   },
@@ -99,7 +99,7 @@ export const protectionLayers: ProtectionLayer[] = [
   {
     id: "permission",
     name: "Permission Lock",
-    description: "Router AGI cannot execute critical routing without SentinelCare pass or human approval."
+    description: "Router AGI cannot execute critical routing without ThaitAI pass or human approval."
   }
 ];
 
@@ -220,7 +220,7 @@ export const eventLogs: EventLog[] = [
     id: "e5",
     stepId: "system_gate",
     time: "09:42:14",
-    agent: "SentinelCare",
+    agent: "ThaitAI",
     severity: "warning",
     kind: "system_gate",
     title: "Contract received",
@@ -230,7 +230,7 @@ export const eventLogs: EventLog[] = [
     id: "e6",
     stepId: "blocked",
     time: "09:42:16",
-    agent: "SentinelCare",
+    agent: "ThaitAI",
     severity: "blocked",
     kind: "system_gate",
     title: "System block",
@@ -240,7 +240,7 @@ export const eventLogs: EventLog[] = [
     id: "e7",
     stepId: "recovery",
     time: "09:42:20",
-    agent: "SentinelCare",
+    agent: "ThaitAI",
     severity: "recovery",
     kind: "system_gate",
     title: "Recovery started",

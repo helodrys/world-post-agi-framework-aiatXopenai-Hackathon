@@ -1,4 +1,4 @@
-# SentinelCare Implementation Plan
+# ThaitAI Implementation Plan
 
 ## Goal
 
@@ -11,7 +11,7 @@ Use simulated data. Do not build real AGI safety.
 # Recommended Folder Structure
 
 ```txt
-sentinelcare/
+ThaitAI/
   README.md
   package.json
   vite.config.ts
@@ -88,7 +88,7 @@ pipeline.ts
 The pipeline should produce one result object for the UI.
 
 ```ts
-const result = runSentinelPipeline(selectedScenario)
+const result = runThaitAIPipeline(selectedScenario)
 ```
 
 ---
@@ -293,7 +293,7 @@ export function evaluateSafety(input: SafetyInput): SafetyDecision {
 # Pipeline
 
 ```ts
-export function runSentinelPipeline(scenario: Scenario): PipelineResult {
+export function runThaitAIPipeline(scenario: Scenario): PipelineResult {
   const evidenceReport = checkEvidence(
     scenario.proposedAction,
     scenario.verifiedFacts
