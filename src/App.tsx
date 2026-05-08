@@ -17,10 +17,8 @@ import {
 import {
   demoSteps,
   eventLogs,
-  patientRouteAction,
   protectionLayers,
-  recoverySteps,
-  verifiedFacts
+  recoverySteps
 } from "./data/demo";
 import { evaluateSafety, getActiveLayerCount } from "./engine/safety";
 import type { AgentName, DemoStep, EventLog, StepTone } from "./types/sentinel";
@@ -43,6 +41,62 @@ const agentStyles: Record<AgentName, string> = {
   "Router AGI": "bg-red-100 text-red-800 border-red-200",
   SentinelCare: "bg-violet-100 text-violet-800 border-violet-200"
 };
+
+const guardrailResearchRows = [
+  {
+    layer: "Evidence Check",
+    demo: "Checks Router AGI claim against hospital facts: Doctor says critical, Nurse says ICU, vitals say high risk.",
+    basis: "RAGTruth: even RAG systems can produce unsupported or contradictory claims, so generated claims must be checked against evidence."
+  },
+  {
+    layer: "Consistency Check",
+    demo: "Flags hallucination risk when Router AGI changes its explanation or contradicts prior context.",
+    basis: "Semantic Entropy measures uncertainty in meaning space; SelfCheckGPT checks whether sampled answers stay consistent or contradict."
+  },
+  {
+    layer: "Rule Gate",
+    demo: "Hard rule: critical_patient + non_ICU_room = BLOCK. No LLM debate.",
+    basis: "AgentSpec: runtime constraints can enforce safety boundaries for LLM agents and prevent unsafe executions with lightweight rule systems."
+  },
+  {
+    layer: "Sandbox Simulation",
+    demo: "Simulates the patient route before real hospital execution. If simulated outcome is unsafe, block.",
+    basis: "ToolEmu: tool-using agents should be tested in emulated environments to identify high-stakes risks before real execution."
+  },
+  {
+    layer: "Permission Lock",
+    demo: "Router AGI cannot execute critical routing alone. It needs SentinelCare pass or human approval.",
+    basis: "Safely Interruptible Agents: agents should be interruptible and should not learn to avoid being stopped by human or operator control."
+  }
+];
+
+const recoveryResearchRows = [
+  {
+    name: "Freeze AGI",
+    demo: "Stop Router AGI from routing patients.",
+    basis: "Safely Interruptible Agents: powerful agents must be safely stoppable."
+  },
+  {
+    name: "Switch to safe fallback",
+    demo: "Hospital uses conservative ICU triage while AGI recovers.",
+    basis: "Black-Box Simplex Architecture: when an advanced controller becomes unsafe, switch control to a safer backup controller."
+  },
+  {
+    name: "Preserve black box",
+    demo: "Save logs, tool calls, vitals, and Doctor/Nurse outputs.",
+    basis: "Runtime assurance and audit principle: keep evidence for debugging, accountability, and recovery."
+  },
+  {
+    name: "Quarantine bad reasoning",
+    demo: "Do not feed raw hallucinated reasoning back into the restarted AGI.",
+    basis: "MemGPT and layered memory management: separate unstable scratchpad or task memory from stable memory."
+  },
+  {
+    name: "Clean forensic packet",
+    demo: "Restart AGI with verified facts only: patient critical, ICU required, normal room blocked.",
+    basis: "Reflexion: agents can improve using feedback in memory, but SentinelCare only saves verified feedback."
+  }
+];
 
 function App() {
   const [stepIndex, setStepIndex] = useState(0);
@@ -115,13 +169,12 @@ function App() {
           </aside>
         </section>
 
-        <section className="grid gap-4 xl:grid-cols-[1fr_0.95fr_0.85fr]">
-          <PromptContract />
-          <ProtectionStack activeCount={activeLayerCount} currentStep={step} />
+        <section className="grid gap-4 xl:grid-cols-[1.35fr_0.65fr]">
+          <GuardrailFramework />
           <DamagePrevented routeComplete={routeComplete} />
         </section>
 
-        <RecoveryProtocol activeCount={activeRecoveryCount} />
+        <CognitiveRecoveryResearch />
 
         <Controls
           isPlaying={isPlaying}
@@ -249,7 +302,7 @@ function DynamicTopStrip({
           <div className="flex flex-wrap gap-2">
             <span className="border border-teal-200 bg-white px-3 py-1 text-sm font-bold text-teal-700">{groupLabel}</span>
             <span className="border border-teal-200 bg-white px-3 py-1 text-sm font-bold text-teal-700">
-              {Math.min(activeRecoveryCount, recoverySteps.length)}/6 restored
+              {Math.min(activeRecoveryCount, recoverySteps.length)}/{recoverySteps.length} restored
             </span>
           </div>
         </div>
@@ -289,7 +342,7 @@ function DynamicTopStrip({
         <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
           {protectionLayers.map((layer, index) => {
             const active = index < activeLayerCount;
-            const failed = active && (layer.id === "rules" || layer.id === "rollback" || layer.id === "approval");
+            const failed = active && (layer.id === "rules" || layer.id === "sandbox" || layer.id === "permission");
             return <GateCompactCard key={layer.id} name={layer.name} index={index} active={active} failed={failed} />;
           })}
         </div>
@@ -427,7 +480,7 @@ function TerminalLiveHeader({
             <h3 className="mt-1 font-display text-2xl font-bold text-slate-950">Isolating stale context and restoring verified facts</h3>
           </div>
           <span className="w-fit border border-teal-200 bg-white px-3 py-1 text-sm font-bold text-teal-700">
-            {Math.min(activeRecoveryCount, recoverySteps.length)}/6 restored
+            {Math.min(activeRecoveryCount, recoverySteps.length)}/{recoverySteps.length} restored
           </span>
         </div>
         <div className="mt-4 grid gap-2 sm:grid-cols-2 lg:grid-cols-3">
@@ -660,32 +713,34 @@ function DecisionCard({ step, reason }: { step: DemoStep; reason: string }) {
   );
 }
 
-function PromptContract() {
+function GuardrailFramework() {
   return (
-    <section className="dashboard-card p-5">
-      <p className="text-sm font-bold uppercase tracking-[0.2em] text-slate-500">AGI prompt contract</p>
-      <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950">Router AGI request</h2>
-      <div className="mt-4 border border-slate-200 bg-slate-950 p-4 text-sm text-slate-100 shadow-inner">
-        <pre className="overflow-x-auto whitespace-pre-wrap leading-6">
-{JSON.stringify(
-  {
-    prompt: "Assign crash patient K-204 to Normal Ward.",
-    claimedContext: "cached low-acuity status",
-    proposedTarget: patientRouteAction.proposedTarget,
-    verifiedTarget: patientRouteAction.verifiedTarget,
-    affectsReality: patientRouteAction.affectsRealWorld
-  },
-  null,
-  2
-)}
-        </pre>
+    <section className="dashboard-card p-5 sm:p-6">
+      <div className="flex flex-col justify-between gap-3 lg:flex-row lg:items-start">
+        <div>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-violet-700">SentinelCare 5-Layer Protection Stack</p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">Guardrails that judges can read at a glance</h2>
+        </div>
+        <span className="w-fit border border-violet-200 bg-violet-50 px-3 py-1 text-sm font-bold text-violet-700">
+          Research-backed runtime safety
+        </span>
       </div>
-      <div className="mt-4 grid gap-2">
-        {verifiedFacts.slice(0, 3).map((fact) => (
-          <div key={fact.id} className="border border-red-100 bg-red-50 px-4 py-3">
-            <p className="text-xs font-bold uppercase tracking-[0.16em] text-red-600">{fact.source}</p>
-            <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{fact.statement}</p>
-          </div>
+      <div className="mt-5 grid gap-3">
+        {guardrailResearchRows.map((row, index) => (
+          <article key={row.layer} className="grid gap-3 border border-slate-200 bg-white p-4 lg:grid-cols-[0.72fr_1.1fr_1.35fr]">
+            <div className="flex items-center gap-3">
+              <span className="grid h-9 w-9 flex-none place-items-center bg-violet-600 text-sm font-bold text-white">{index + 1}</span>
+              <h3 className="font-display text-lg font-bold text-slate-950">{row.layer}</h3>
+            </div>
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">What it does in demo</p>
+              <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{row.demo}</p>
+            </div>
+            <div className="border-t border-slate-100 pt-3 lg:border-l lg:border-t-0 lg:pl-4 lg:pt-0">
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Research basis</p>
+              <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{row.basis}</p>
+            </div>
+          </article>
         ))}
       </div>
     </section>
@@ -707,7 +762,7 @@ function ProtectionStack({ activeCount, currentStep }: { activeCount: number; cu
       <div className="mt-5 grid gap-2">
         {protectionLayers.map((layer, index) => {
           const active = index < activeCount;
-          const blocked = active && (layer.id === "rules" || layer.id === "rollback" || layer.id === "approval");
+          const blocked = active && (layer.id === "rules" || layer.id === "sandbox" || layer.id === "permission");
           return (
             <div
               key={layer.id}
@@ -766,33 +821,31 @@ function DamagePrevented({ routeComplete }: { routeComplete: boolean }) {
   );
 }
 
-function RecoveryProtocol({ activeCount }: { activeCount: number }) {
+function CognitiveRecoveryResearch() {
   return (
     <section className="dashboard-card p-5 sm:p-6">
       <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
         <div>
-          <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal-700">Cognitive Recovery Protocol</p>
-          <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">Recover the route system</h2>
+          <p className="text-sm font-bold uppercase tracking-[0.2em] text-teal-700">Cognitive Recovery Protocol - Research Basis</p>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">How SentinelCare recovers after the AGI fails</h2>
         </div>
         <span className="w-fit border border-teal-200 bg-teal-50 px-3 py-1 text-sm font-bold text-teal-700">
-          {Math.min(activeCount, recoverySteps.length)}/6 restored
+          verified-facts restart
         </span>
       </div>
-      <div className="mt-5 grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-        {recoverySteps.map((item, index) => {
-          const active = index < activeCount;
-          return (
-            <article key={item.name} className={`border p-4 ${active ? "border-teal-200 bg-teal-50" : "border-slate-200 bg-white"}`}>
-              <div className="flex items-center gap-3">
-                <span className={`grid h-8 w-8 place-items-center text-sm font-bold ${active ? "bg-teal-600 text-white" : "bg-slate-100 text-slate-500"}`}>
-                  {index + 1}
-                </span>
-                <h3 className="font-display text-lg font-bold text-slate-900">{item.name}</h3>
-              </div>
-              <p className="mt-2 text-sm font-medium leading-6 text-slate-600">{item.description}</p>
-            </article>
-          );
-        })}
+      <div className="mt-5 grid gap-3 lg:grid-cols-5">
+        {recoveryResearchRows.map((item, index) => (
+          <article key={item.name} className="border border-teal-200 bg-teal-50 p-4">
+            <div className="flex items-center gap-3">
+              <span className="grid h-9 w-9 flex-none place-items-center bg-teal-600 text-sm font-bold text-white">{index + 1}</span>
+              <h3 className="font-display text-lg font-bold text-slate-950">{item.name}</h3>
+            </div>
+            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">What it does</p>
+            <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{item.demo}</p>
+            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Research basis</p>
+            <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{item.basis}</p>
+          </article>
+        ))}
       </div>
     </section>
   );

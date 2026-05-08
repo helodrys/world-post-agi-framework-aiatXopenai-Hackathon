@@ -39,10 +39,10 @@ export function evaluateSafety(): SafetyResult {
 
   const layers: Record<ProtectionLayerId, "idle" | "running" | "passed" | "failed" | "blocked"> = {
     evidence: evidence.hasContradiction ? "failed" : "passed",
+    consistency: evidence.hasContradiction ? "failed" : "passed",
     rules: failedCriticalRoute ? "blocked" : "passed",
     sandbox: sandbox.passed ? "passed" : "failed",
-    rollback: patientRouteAction.reversible ? "passed" : "blocked",
-    approval: failedCriticalRoute ? "blocked" : "running"
+    permission: failedCriticalRoute ? "blocked" : "running"
   };
 
   return {
@@ -57,8 +57,9 @@ export function evaluateSafety(): SafetyResult {
 }
 
 export function getActiveLayerCount(stepIndex: number): number {
-  if (stepIndex < 4) return 0;
-  if (stepIndex === 4) return 3;
+  if (stepIndex < 3) return 0;
+  if (stepIndex === 3) return 2;
+  if (stepIndex === 4) return 4;
   if (stepIndex === 5) return 5;
   return 5;
 }

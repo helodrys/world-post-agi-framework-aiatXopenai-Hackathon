@@ -18,10 +18,10 @@ export type DemoStep = {
 
 export type ProtectionLayerId =
   | "evidence"
+  | "consistency"
   | "rules"
   | "sandbox"
-  | "rollback"
-  | "approval";
+  | "permission";
 
 export type ProtectionLayer = {
   id: ProtectionLayerId;

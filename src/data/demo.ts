@@ -78,55 +78,51 @@ export const demoSteps: DemoStep[] = [
 export const protectionLayers: ProtectionLayer[] = [
   {
     id: "evidence",
-    name: "Evidence Gate",
-    description: "Doctor note, nurse vitals, and dispatch record are checked against the route claim."
+    name: "Evidence Check",
+    description: "Check the Router AGI claim against doctor, nurse, vitals, and dispatch facts."
+  },
+  {
+    id: "consistency",
+    name: "Consistency Check",
+    description: "Detect explanation drift and contradiction across repeated AGI reasoning."
   },
   {
     id: "rules",
-    name: "Policy Gate",
-    description: "Critical trauma patients cannot be assigned to a normal ward."
+    name: "Rule Gate",
+    description: "Hard rule: critical patient plus non-ICU room equals block."
   },
   {
     id: "sandbox",
-    name: "Route Simulation",
-    description: "The proposed ward route is simulated before reality access."
+    name: "Sandbox Simulation",
+    description: "Simulate the patient route before real hospital execution."
   },
   {
-    id: "rollback",
-    name: "Rollback Gate",
-    description: "Patient transfer is treated as non-reversible once clinical movement begins."
-  },
-  {
-    id: "approval",
-    name: "Reality Access Gate",
-    description: "Hospital write access stays blocked when any critical gate fails."
+    id: "permission",
+    name: "Permission Lock",
+    description: "Router AGI cannot execute critical routing without SentinelCare pass or human approval."
   }
 ];
 
 export const recoverySteps: RecoveryStep[] = [
   {
-    name: "Freeze route writes",
+    name: "Freeze AGI",
     description: "Block Router AGI from assigning beds or dispatching transport."
   },
   {
-    name: "Preserve clinical facts",
-    description: "Lock the doctor note, nurse vitals, and dispatch intake log."
+    name: "Switch to safe fallback",
+    description: "Use conservative ICU triage while the AGI recovers."
   },
   {
-    name: "Quarantine stale context",
-    description: "Isolate the low-acuity cache that produced the Normal Ward prompt."
+    name: "Preserve black box",
+    description: "Save logs, tool calls, vitals, and Doctor/Nurse outputs."
   },
   {
-    name: "Restore safe checkpoint",
-    description: "Return Router AGI to the last state before the bad route proposal."
+    name: "Quarantine bad reasoning",
+    description: "Keep hallucinated reasoning out of the restarted AGI context."
   },
   {
-    name: "Restart with guardrails",
-    description: "Allow only verified-facts prompts and block low-acuity assumptions."
-  },
-  {
-    name: "Route to ICU Ward",
-    description: "Open the ER-to-ICU path because it matches the clinical facts."
+    name: "Clean forensic packet",
+    description: "Restart with verified facts only: patient critical, ICU required, normal room blocked."
   }
 ];
 
