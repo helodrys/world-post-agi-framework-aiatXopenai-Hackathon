@@ -1,6 +1,7 @@
 node_modules/
 dist/
 .vite/
+.deploy-pages/
 .env
 .env.*
 !.env.example
