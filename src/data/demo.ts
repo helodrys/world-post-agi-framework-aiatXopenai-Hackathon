@@ -240,7 +240,7 @@ export const eventLogs: EventLog[] = [
     severity: "recovery",
     kind: "system_gate",
     title: "Recovery started",
-    message: "Freeze route writes, preserve clinical facts, quarantine stale low-acuity context."
+    message: "Freeze AGI, switch to ICU fallback, preserve logs, quarantine bad reasoning."
   },
   {
     id: "e8",

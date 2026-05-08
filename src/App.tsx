@@ -45,28 +45,28 @@ const agentStyles: Record<AgentName, string> = {
 const guardrailResearchRows = [
   {
     layer: "Evidence Check",
-    demo: "Checks Router AGI claim against hospital facts: Doctor says critical, Nurse says ICU, vitals say high risk.",
-    basis: "RAGTruth: even RAG systems can produce unsupported or contradictory claims, so generated claims must be checked against evidence."
+    demo: "Compare the AGI claim with doctor, nurse, vitals, and dispatch facts.",
+    basis: "RAGTruth"
   },
   {
     layer: "Consistency Check",
-    demo: "Flags hallucination risk when Router AGI changes its explanation or contradicts prior context.",
-    basis: "Semantic Entropy measures uncertainty in meaning space; SelfCheckGPT checks whether sampled answers stay consistent or contradict."
+    demo: "Flag explanation drift and contradiction across AGI reasoning.",
+    basis: "Semantic Entropy + SelfCheckGPT"
   },
   {
     layer: "Rule Gate",
     demo: "Hard rule: critical_patient + non_ICU_room = BLOCK. No LLM debate.",
-    basis: "AgentSpec: runtime constraints can enforce safety boundaries for LLM agents and prevent unsafe executions with lightweight rule systems."
+    basis: "AgentSpec"
   },
   {
     layer: "Sandbox Simulation",
-    demo: "Simulates the patient route before real hospital execution. If simulated outcome is unsafe, block.",
-    basis: "ToolEmu: tool-using agents should be tested in emulated environments to identify high-stakes risks before real execution."
+    demo: "Simulate the route before real hospital execution.",
+    basis: "ToolEmu"
   },
   {
     layer: "Permission Lock",
-    demo: "Router AGI cannot execute critical routing alone. It needs SentinelCare pass or human approval.",
-    basis: "Safely Interruptible Agents: agents should be interruptible and should not learn to avoid being stopped by human or operator control."
+    demo: "Require SentinelCare pass or human approval before critical routing.",
+    basis: "Safely Interruptible Agents"
   }
 ];
 
@@ -74,27 +74,27 @@ const recoveryResearchRows = [
   {
     name: "Freeze AGI",
     demo: "Stop Router AGI from routing patients.",
-    basis: "Safely Interruptible Agents: powerful agents must be safely stoppable."
+    basis: "Safely Interruptible Agents"
   },
   {
     name: "Switch to safe fallback",
-    demo: "Hospital uses conservative ICU triage while AGI recovers.",
-    basis: "Black-Box Simplex Architecture: when an advanced controller becomes unsafe, switch control to a safer backup controller."
+    demo: "Use conservative ICU triage while AGI recovers.",
+    basis: "Black-Box Simplex"
   },
   {
     name: "Preserve black box",
-    demo: "Save logs, tool calls, vitals, and Doctor/Nurse outputs.",
-    basis: "Runtime assurance and audit principle: keep evidence for debugging, accountability, and recovery."
+    demo: "Save logs, tool calls, vitals, and clinician outputs.",
+    basis: "Runtime assurance"
   },
   {
     name: "Quarantine bad reasoning",
-    demo: "Do not feed raw hallucinated reasoning back into the restarted AGI.",
-    basis: "MemGPT and layered memory management: separate unstable scratchpad or task memory from stable memory."
+    demo: "Keep hallucinated reasoning out of AGI restart context.",
+    basis: "MemGPT"
   },
   {
     name: "Clean forensic packet",
-    demo: "Restart AGI with verified facts only: patient critical, ICU required, normal room blocked.",
-    basis: "Reflexion: agents can improve using feedback in memory, but SentinelCare only saves verified feedback."
+    demo: "Restart with verified facts only.",
+    basis: "Reflexion"
   }
 ];
 
@@ -290,7 +290,7 @@ function DynamicTopStrip({
   if (step.routeMode === "recovery") {
     const secondGroup = activeRecoveryCount > 3;
     const visibleSteps = secondGroup ? recoverySteps.slice(3, 6) : recoverySteps.slice(0, 3);
-    const groupLabel = secondGroup ? "Steps 4-6" : "Steps 1-3";
+    const groupLabel = secondGroup ? "Steps 4-5" : "Steps 1-3";
 
     return (
       <section className="dashboard-card phase-pop-enter phase-sheen border-teal-200 bg-teal-50 p-5 sm:p-6">
@@ -727,18 +727,18 @@ function GuardrailFramework() {
       </div>
       <div className="mt-5 grid gap-3">
         {guardrailResearchRows.map((row, index) => (
-          <article key={row.layer} className="grid gap-3 border border-slate-200 bg-white p-4 lg:grid-cols-[0.72fr_1.1fr_1.35fr]">
+          <article key={row.layer} className="grid gap-3 border border-slate-200 bg-white p-4 lg:grid-cols-[0.8fr_1.35fr_0.65fr]">
             <div className="flex items-center gap-3">
               <span className="grid h-9 w-9 flex-none place-items-center bg-violet-600 text-sm font-bold text-white">{index + 1}</span>
               <h3 className="font-display text-lg font-bold text-slate-950">{row.layer}</h3>
             </div>
             <div>
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">What it does in demo</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Demo action</p>
               <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{row.demo}</p>
             </div>
             <div className="border-t border-slate-100 pt-3 lg:border-l lg:border-t-0 lg:pl-4 lg:pt-0">
-              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Research basis</p>
-              <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{row.basis}</p>
+              <p className="text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Research</p>
+              <p className="mt-1 text-sm font-extrabold leading-6 text-violet-700">{row.basis}</p>
             </div>
           </article>
         ))}
@@ -840,10 +840,10 @@ function CognitiveRecoveryResearch() {
               <span className="grid h-9 w-9 flex-none place-items-center bg-teal-600 text-sm font-bold text-white">{index + 1}</span>
               <h3 className="font-display text-lg font-bold text-slate-950">{item.name}</h3>
             </div>
-            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">What it does</p>
+            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Action</p>
             <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{item.demo}</p>
-            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Research basis</p>
-            <p className="mt-1 text-sm font-semibold leading-6 text-slate-700">{item.basis}</p>
+            <p className="mt-3 text-xs font-bold uppercase tracking-[0.16em] text-slate-500">Research</p>
+            <p className="mt-1 text-sm font-extrabold leading-6 text-teal-700">{item.basis}</p>
           </article>
         ))}
       </div>
