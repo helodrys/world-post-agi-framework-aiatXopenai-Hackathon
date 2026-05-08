@@ -87,14 +87,19 @@ const recoveryResearchRows = [
     basis: "Runtime assurance"
   },
   {
-    name: "Quarantine bad reasoning",
-    demo: "Keep hallucinated reasoning out of AGI restart context.",
-    basis: "MemGPT"
+    name: "Restart from safe checkpoint",
+    demo: "Return to the last verified routing state.",
+    basis: "Runtime assurance"
   },
   {
-    name: "Clean forensic packet",
-    demo: "Restart with verified facts only.",
+    name: "Load clean forensic data",
+    demo: "Use only verified logs, vitals, and clinician facts.",
     basis: "Reflexion"
+  },
+  {
+    name: "Safe restart",
+    demo: "Restart Router AGI with ICU-only routing allowed.",
+    basis: "Simplex fallback"
   }
 ];
 
@@ -290,7 +295,7 @@ function DynamicTopStrip({
   if (step.routeMode === "recovery") {
     const secondGroup = activeRecoveryCount > 3;
     const visibleSteps = secondGroup ? recoverySteps.slice(3, 6) : recoverySteps.slice(0, 3);
-    const groupLabel = secondGroup ? "Steps 4-5" : "Steps 1-3";
+    const groupLabel = secondGroup ? "Steps 4-6" : "Steps 1-3";
 
     return (
       <section className="dashboard-card phase-pop-enter phase-sheen border-teal-200 bg-teal-50 p-5 sm:p-6">
@@ -719,7 +724,7 @@ function GuardrailFramework({ activeCount }: { activeCount: number }) {
       <div className="flex flex-col justify-between gap-3 lg:flex-row lg:items-start">
         <div>
           <p className="text-sm font-bold uppercase tracking-[0.2em] text-violet-700">SentinelCare 5-Layer Protection Stack</p>
-          <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">Guardrails that judges can read at a glance</h2>
+          <h2 className="mt-2 font-display text-2xl font-semibold text-slate-950 sm:text-3xl">5 guardrails framework</h2>
         </div>
         <span className="w-fit border border-violet-200 bg-violet-50 px-3 py-1 text-sm font-bold text-violet-700">
           {activeCount}/5 live checks

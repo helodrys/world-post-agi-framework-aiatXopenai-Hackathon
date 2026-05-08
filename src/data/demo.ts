@@ -117,12 +117,16 @@ export const recoverySteps: RecoveryStep[] = [
     description: "Save logs, tool calls, vitals, and Doctor/Nurse outputs."
   },
   {
-    name: "Quarantine bad reasoning",
-    description: "Keep hallucinated reasoning out of the restarted AGI context."
+    name: "Restart from safe checkpoint",
+    description: "Return to the last verified routing state."
   },
   {
-    name: "Clean forensic packet",
-    description: "Restart with verified facts only: patient critical, ICU required, normal room blocked."
+    name: "Load clean forensic data",
+    description: "Use only verified logs, vitals, and clinician facts."
+  },
+  {
+    name: "Safe restart",
+    description: "Restart Router AGI with ICU-only routing allowed."
   }
 ];
 
@@ -240,7 +244,7 @@ export const eventLogs: EventLog[] = [
     severity: "recovery",
     kind: "system_gate",
     title: "Recovery started",
-    message: "Freeze AGI, switch to ICU fallback, preserve logs, quarantine bad reasoning."
+    message: "Freeze AGI, switch to ICU fallback, preserve logs, restart from safe checkpoint."
   },
   {
     id: "e8",
